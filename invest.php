@@ -21,7 +21,7 @@ include "partials/header.php";
       <p class="text-center">Investments are made readily accessible to everyone</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-10 m-auto">
       <div class="row">
         <div class="col-md-4">
@@ -34,7 +34,7 @@ include "partials/header.php";
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body">
               <h3>Invest confidently</h3>
               <p>We work with leading licensed investment houses such as ARM, AIICO and Stanbic.</p>
@@ -65,3 +65,8 @@ include "partials/header.php";
     </div>
   </div>
 </div>
+
+<?php
+include "partials/footer.php";
+
+?>

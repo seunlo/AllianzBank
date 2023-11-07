@@ -5,7 +5,14 @@ if (isset($_SESSION["cust_id"])) {
   $cust_id = $_SESSION["cust_id"];
   $customer = new Customer();
   $all_customer = $customer->retrieveCustomer($cust_id);
+  // echo "<pre>";
+  // print_r($all_customer);
 }
+
+if (isset($_SESSION["loan_amt_id"])) {
+  $loan_amt_id = $_SESSION["loan_amt_id"];
+}
+
 
 ?>
 
@@ -16,6 +23,7 @@ if (isset($_SESSION["cust_id"])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap/css/jquery.dataTables.min.css">
   <title>Document</title>
 </head>
 
@@ -45,12 +53,14 @@ if (isset($_SESSION["cust_id"])) {
               <a class="nav-link text-light" href="transfer.php">Funds Transfer</a>
             </li>
           <?php } ?>
-            <li class="nav-item" style="margin-left:500px">
-              <a class="nav-link text-light">Account Balance:</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="signout.php">LogOut</a>
-            </li>
+          <li class="nav-item" style="margin-left:500px">
+            <a class="nav-link text-light"><b>Account Balance:</b> N
+              <?php echo $all_customer['amount']; ?>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="signout.php">LogOut</a>
+          </li>
         </ul>
       </div>
     </div>

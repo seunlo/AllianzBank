@@ -34,11 +34,8 @@ if (isset($_POST['change_pass_btn'])) {
             </div>
             <button class="btn btn-success rounded-3 bg-success" name="change_pass_btn">Change Password</button>
           </form>
-
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

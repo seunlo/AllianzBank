@@ -43,20 +43,8 @@ class Customer extends Db
       $stmt->bindParam(2, $amount, PDO::PARAM_STR);
       $stmt->bindParam(3, $acccunt_num, PDO::PARAM_STR);
       $stmt->execute();
-
     }
   }
-  public function get_wallet_no($cust_id)
-  {
-    $sql = "SELECT * FROM wallet WHERE cust_id = ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->bindParam(1, $cust_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $number = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $number;
-
-  }
-
   public function customerLog($phone_number, $password)
   {
     $sql = "SELECT * FROM customer WHERE phone_number = ?";
@@ -64,7 +52,6 @@ class Customer extends Db
     $stmt->bindParam(1, $phone_number, PDO::PARAM_STR);
     $stmt->execute();
     $cust_count = $stmt->rowCount();
-
 
     //if it is not in db then count will be less than one
     if ($cust_count < 1) {
@@ -122,11 +109,7 @@ class Customer extends Db
 
   public function retrieveCustomer($cust_id)
   {
-    $sql = "SELECT customer.cust_id, customer.full_name, customer.utility_bill, customer.passport_photo, customer.valid_id, customer.email_address, customer.home_address, customer.phone_number, customer.register_date, account_type.type as 'account type', wallet.wallet_no
-    FROM customer
-    LEFT JOIN account_type ON account_type.acct_id = customer.acct_id
-    LEFT JOIN wallet ON wallet.cust_id = customer.cust_id
-    WHERE customer.cust_id = ?";
+    $sql = "SELECT customer.cust_id, customer.full_name, customer.utility_bill, customer.passport_photo, customer.valid_id, customer.email_address, customer.home_address, customer.phone_number, customer.register_date, account_type.type as 'account type', wallet.wallet_no, wallet.amount FROM customer LEFT JOIN account_type ON account_type.acct_id = customer.acct_id LEFT JOIN wallet ON wallet.cust_id = customer.cust_id WHERE customer.cust_id = ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->bindParam(1, $cust_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -172,9 +155,3 @@ $customer = new Customer();
 //print_r($wallet);
 
 ?>
-
-<!-- SELECT customer.cust_id, customer.full_name, customer.utility_bill, customer.passport_photo, customer.valid_id, customer.email_address, customer.home_address, customer.phone_number, customer.register_date, account_type.type as 'account type', wallet.wallet_no
-FROM customer
-JOIN account_type ON account_type.acct_id = customer.acct_id
-JOIN wallet ON wallet.cust_id = customer.cust_id
-WHERE customer.cust_id = 11; -->

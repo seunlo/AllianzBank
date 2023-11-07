@@ -1,99 +1,57 @@
+<table class="table display" id="transaction">
+  <thead>
+    <th>S/N</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Credit</th>
+    <th>Debit</th>
+    <th>Balance</th>
+  </thead>
+  <tbody>
+    <?php $sn = 1;
+    $credit = '0.00';
+    $debit = '0.00';
+    $current_total = 0;
+    ?>
+    <?php foreach ($get_all as $key) { ?>
+      <tr>
+        <td>
+          <?php echo $sn++; ?>
+        </td>
+        <td>
+          <?php echo $key['date']; ?>
+        </td>
+        <td>
+          <?php echo $key['description']; ?>
+        </td>
+
+        <?php if ($key['trans_type_id'] == 1) { ?>
+          <td>
+            <?php echo number_format($key['amount'], 2); ?>
+          </td>
+          <td>
+            <?php echo $debit; ?>
+          </td>
+          <td>
+            <?php $current_total += $key['amount'];
+            echo number_format($current_total, 2); ?>
+          </td>
+        <?php } elseif ($key['trans_type_id'] == 2) { ?>
+          <td>
+            <?php echo $credit; ?>
+          </td>
+          <td>
+            <?php echo number_format($key['amount'], 2); ?>
+          </td>
+
+          <td>
+            <?php $current_total -= $key['amount'];
+            echo number_format($current_total, 2); ?>
+          </td>
+        <?php } ?>
 
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="card w-100">
-      <div class="card-body">
-        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A recusandae pariatur placeat quae distinctio at
-          voluptas reprehenderit. Vel temporibus </h3>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card shadowBlack ">
-          <img class="card-img-top" src="images/contacts.gif" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="feedback.php" class="btn btn-outline-primary btn-block w-100">Update Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card shadowBlack ">
-          <img class="card-img-top" src="images/password.jpg" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="feedback.php" class="btn btn-outline-primary btn-block w-100">Change Password</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <img class="card-img-top" src="images/transfer.jpg" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="transfer.php" class="btn btn-outline-success btn-block w-100">Transfer Money</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <img class="card-img-top" src="images/acount.jpg" style="max-height: 155px;min-height: 155px"
-            alt="Card image cap">
-          <div class="card-body">
-            <a href="accounts.php" class="btn btn-outline-success btn-block w-100">Account Summary</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col-md-6 my-3">
-        <div class="card">
-          <img class="card-img-top" src="images/loan.jpg" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="loan.php" class="btn btn-outline-success btn-block w-100">Get a Loan</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 my-3">
-        <div class="card">
-          <img class="card-img-top" src="images/investment2.jpg" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="invest.php" class="btn btn-outline-success btn-block w-100">Invest Money</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card shadowBlack ">
-          <img class="card-img-top" src="images/bell.gif" style="max-height: 155px;min-height: 155px"
-            alt="Card image cap">
-          <div class="card-body">
-            <a href="notice.php" class="btn btn-outline-primary btn-block w-100">Check Notification</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card shadowBlack ">
-          <img class="card-img-top" src="images/contacts.gif" alt="Card image cap"
-            style="max-height: 155px;min-height: 155px">
-          <div class="card-body">
-            <a href="feedback.php" class="btn btn-outline-primary btn-block w-100">Contact Us</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </tr>
+    <?php } ?>
+  </tbody>
+</table>

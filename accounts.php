@@ -1,24 +1,23 @@
 <?php
-//session_start();
 include "partials/header.php";
-require_once "classes/Customer.php";
-require_once "classes/RandomNumber.php";
+//require_once "classes/Customer.php";
+//require_once "classes/RandomNumber.php";
 
-if (isset($_SESSION["cust_id"])) {
-  $cust_id = $_SESSION["cust_id"];
-  $customer = new Customer();
-  $all_customer = $customer->retrieveCustomer($cust_id);
-  $getNumber = $customer->get_wallet_no($cust_id);
-  //echo "<pre>";
-  //print_r($getNumber);
-}
+// if (isset($_SESSION["cust_id"])) {
+//   $cust_id = $_SESSION["cust_id"];
+//   $customer = new Customer();
+//   $all_customer = $customer->retrieveCustomer($cust_id);
+  //$getNumber = $customer->get_wallet_no($cust_id);
+  // echo "<pre>";
+  // print_r($all_customer);
+//}
 
 
-if(isset($all_customer['wallet_no'])) {
-  $acct_num = $all_customer['wallet_no'];
-}else{
-  $acct_num = null;
-}
+// if(isset($all_customer['wallet_no'])) {
+//   $acct_num = $all_customer['wallet_no'];
+// }else{
+//   $acct_num = null;
+// }
 ?>
 <div class="container">
   <div class="row">
@@ -31,10 +30,13 @@ if(isset($all_customer['wallet_no'])) {
           <table class="table table-striped table-dark w-75 mx-auto">
             <thead>
               <tr>
-                <td>Account No.
+                <th>Account No.</th>
+                <!-- <td>
                   <?php echo $acct_num; ?>
+                </td>                -->
+                <td>
+                  <?php echo $all_customer['wallet_no']?>
                 </td>
-                <th></th>
               </tr>
             </thead>
             <tbody>

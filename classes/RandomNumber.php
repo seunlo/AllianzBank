@@ -12,12 +12,9 @@ class RandomNumber extends Db
     while ($length--) {
       $key = array_rand($final_array);
       $account_number .= $final_array[$key];
-
     }
-
     return $account_number;
   }
-
 }
 
 // $number = new RandomNumber();
